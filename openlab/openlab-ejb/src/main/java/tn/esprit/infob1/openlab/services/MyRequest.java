@@ -22,12 +22,16 @@ public class MyRequest implements MyRequestRemote, MyRequestLocal {
 	public void sendRequest(String request) {
 		System.out.println("Request : " + request);
 		mapOfRequests.put(request, "false");
+		showHistory();
 
 	}
 
 	@Override
 	public void showHistory() {
-		// TODO Auto-generated method stub
+		for (String k : mapOfRequests.keySet()) {
+			System.out.println(k);
+			System.out.println(mapOfRequests.get(k));
+		}
 
 	}
 
