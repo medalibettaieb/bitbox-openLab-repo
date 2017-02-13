@@ -85,5 +85,6 @@
     <module>openlab-ejb</module>
     <module>openlab-web</module>
     <module>openlab-ear</module>
+    <module>open-lab-client</module>
   </modules>
 </project>
