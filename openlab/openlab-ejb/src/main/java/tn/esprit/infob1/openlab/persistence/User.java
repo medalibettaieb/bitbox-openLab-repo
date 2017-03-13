@@ -3,7 +3,10 @@ package tn.esprit.infob1.openlab.persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -17,12 +20,13 @@ import javax.persistence.OneToMany;
 public class User implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 
 	@ManyToMany
 	private List<Course> coursesAttended;
-	@OneToMany(mappedBy = "trainer")
+	@OneToMany(mappedBy = "trainer", cascade = CascadeType.MERGE)
 	private List<Course> coursesTaught;
 	private static final long serialVersionUID = 1L;
 
@@ -62,4 +66,10 @@ public class User implements Serializable {
 		this.coursesTaught = coursesTaught;
 	}
 
+	public void linkCoursesToThisTrainer(List<Course> courses) {
+		this.coursesTaught = courses;
+		for (Course c : courses) {
+			c.setTrainer(this);
+		}
+	}
 }

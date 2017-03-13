@@ -6,10 +6,6 @@
 		<class>tn.esprit.infob1.openlab.persistence.Student</class>
 		<class>tn.esprit.infob1.openlab.persistence.Teacher</class>
 		<class>tn.esprit.infob1.openlab.persistence.User</class>
-		<class>tn.esprit.infob1.openlab.persistence.training.Contract</class>
-		<class>tn.esprit.infob1.openlab.persistence.training.ContractId</class>
-		<class>tn.esprit.infob1.openlab.persistence.training.Player</class>
-		<class>tn.esprit.infob1.openlab.persistence.training.Team</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>

@@ -19,7 +19,7 @@ public class TestSubscriptionService {
 		student.setName("Ali");
 		student.setLevel("infoB1");
 
-		subscriptionServiceRemote.addUser(student);
+		subscriptionServiceRemote.saveOrUpdateUser(student);
 
 	}
 

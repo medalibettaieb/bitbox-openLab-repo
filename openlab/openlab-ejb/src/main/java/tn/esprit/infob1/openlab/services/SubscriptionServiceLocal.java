@@ -6,5 +6,5 @@ import tn.esprit.infob1.openlab.persistence.User;
 
 @Local
 public interface SubscriptionServiceLocal {
-	Boolean addUser(User user);
+	Boolean saveOrUpdateUser(User user);
 }
