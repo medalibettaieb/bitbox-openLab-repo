@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>ahla</h1>
+	<h:form>
+
+		<h:outputText value="name" />
+		<h:inputText value="#{mrBean.name}" />
+		<h:commandButton action="#{mrBean.display()}" value="display" />
+	</h:form>
+</body>
+</html>

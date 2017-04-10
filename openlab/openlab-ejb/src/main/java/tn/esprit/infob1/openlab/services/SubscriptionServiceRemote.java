@@ -11,4 +11,6 @@ public interface SubscriptionServiceRemote {
 
 	void saveOrUpdateCourse(Course course);
 
+	User login(String login, String password);
+
 }

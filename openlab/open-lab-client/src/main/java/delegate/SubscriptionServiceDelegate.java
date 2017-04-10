@@ -19,4 +19,8 @@ public class SubscriptionServiceDelegate {
 	public static void doAddCourse(Course course) {
 		getProxy().saveOrUpdateCourse(course);
 	}
+
+	public static User doLogin(String login, String password) {
+		return getProxy().login(login, password);
+	}
 }

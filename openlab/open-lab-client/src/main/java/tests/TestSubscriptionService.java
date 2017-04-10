@@ -15,9 +15,10 @@ public class TestSubscriptionService {
 				"openlab-ear/openlab-ejb/SubscriptionService!tn.esprit.infob1.openlab.services.SubscriptionServiceRemote");
 
 		Student student = new Student();
-		student.setId(1);
 		student.setName("Ali");
 		student.setLevel("infoB1");
+		student.setLogin("a");
+		student.setPassword("a");
 
 		subscriptionServiceRemote.saveOrUpdateUser(student);
 

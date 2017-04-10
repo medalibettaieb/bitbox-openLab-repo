@@ -23,6 +23,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private String login;
+	private String password;
 
 	@ManyToMany
 	private List<Course> coursesAttended;
@@ -72,4 +74,21 @@ public class User implements Serializable {
 			c.setTrainer(this);
 		}
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }

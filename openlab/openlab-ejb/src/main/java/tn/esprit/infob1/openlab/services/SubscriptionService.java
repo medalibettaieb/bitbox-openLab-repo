@@ -40,4 +40,16 @@ public class SubscriptionService implements SubscriptionServiceRemote, Subscript
 		entityManager.merge(course);
 	}
 
+	@Override
+	public User login(String login, String password) {
+		User user = null;
+		try {
+			user = (User) entityManager.createQuery("select u from User u where u.login=:param1 and u.password=:param2")
+					.setParameter("param1", login).setParameter("param2", password).getSingleResult();
+		} catch (Exception e) {
+		}
+
+		return user;
+	}
+
 }
