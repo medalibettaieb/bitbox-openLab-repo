@@ -13,4 +13,6 @@ public interface SubscriptionServiceRemote {
 
 	User login(String login, String password);
 
+	void assignCourseToTeacher(Course course, User user);
+
 }

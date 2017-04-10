@@ -1,5 +1,7 @@
 package tn.esprit.infob1.openlab.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -50,6 +52,24 @@ public class SubscriptionService implements SubscriptionServiceRemote, Subscript
 		}
 
 		return user;
+	}
+
+	@Override
+	public void assignCourseToTeacher(Course course, User user) {
+		course.setTrainer(user);
+
+		entityManager.merge(course);
+
+	}
+
+	@Override
+	public List<Course> findAllCourses() {
+		return entityManager.createQuery("SELECT c FROM Course c", Course.class).getResultList();
+	}
+
+	@Override
+	public User findUserById(Integer id) {
+		return entityManager.find(User.class, id);
 	}
 
 }
