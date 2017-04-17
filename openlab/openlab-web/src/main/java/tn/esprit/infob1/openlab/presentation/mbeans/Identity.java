@@ -23,9 +23,9 @@ public class Identity {
 		if (userLoggedIn != null) {
 			user = userLoggedIn;
 			if (userLoggedIn instanceof Teacher) {
-				System.out.println("teacher");
+				navigateTo = "/pages/trainer/myCourses?faces-redirect=true";
 			} else if (userLoggedIn instanceof Student) {
-				System.out.println("student");
+				navigateTo = "/pages/student/subscriptionToCourses?faces-redirect=true";
 			} else {
 				loggedInAsAgent = true;
 				navigateTo = "/pages/agent/manageCourses?faces-redirect=true";

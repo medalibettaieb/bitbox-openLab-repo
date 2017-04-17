@@ -32,7 +32,7 @@ public class Utilities {
 	public void initDB() {
 		Student student = new Student("amal", "a", "a", "one");
 		Student student2 = new Student("samir", "s", "s", "one");
-		Student student3 = new Student("mouha", "m", "m", "two");
+		Student student3 = new Student("mouha", "mou", "mou", "two");
 
 		Teacher teacher = new Teacher("karim", "k", "k", 1200F);
 		Teacher teacher2 = new Teacher("maher", "m", "m", 1200F);

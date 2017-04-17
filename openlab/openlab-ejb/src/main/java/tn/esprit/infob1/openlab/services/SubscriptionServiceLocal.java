@@ -27,4 +27,11 @@ public interface SubscriptionServiceLocal {
 	List<Teacher> findallTeachers();
 
 	Teacher findTrainerByName(String name);
+
+	List<Course> findAllCoursesByTrainer(User user);
+
+	List<Course> findAllCoursesByStudent(User user);
+
+	void assingStudentToCourse(User user, Course courseSelected);
+
 }

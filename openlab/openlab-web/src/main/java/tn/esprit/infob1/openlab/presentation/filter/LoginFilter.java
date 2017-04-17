@@ -17,7 +17,7 @@ import tn.esprit.infob1.openlab.presentation.mbeans.Identity;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/pages/*")
+@WebFilter("/pages/agent/*")
 public class LoginFilter implements Filter {
 
 	/**

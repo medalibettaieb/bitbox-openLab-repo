@@ -90,4 +90,25 @@ public class SubscriptionService implements SubscriptionServiceRemote, Subscript
 
 	}
 
+	@Override
+	public List<Course> findAllCoursesByTrainer(User user) {
+		return entityManager.createQuery("SELECT c FROM Course c  WHERE c.trainer=:p", Course.class)
+				.setParameter("p", user).getResultList();
+	}
+
+	@Override
+	public List<Course> findAllCoursesByStudent(User user) {
+		return entityManager
+				.createQuery("SELECT c FROM Course c  inner join c.attendeesList ats  WHERE ats.id=:p", Course.class)
+				.setParameter("p", user.getId()).getResultList();
+	}
+
+	@Override
+	public void assingStudentToCourse(User user, Course course) {
+		List<Course> coursesOld = findAllCoursesByStudent(user);
+		coursesOld.add(course);
+		user.setCoursesAttended(coursesOld);
+		entityManager.merge(user);
+	}
+
 }

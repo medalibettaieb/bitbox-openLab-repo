@@ -56,6 +56,7 @@
 					action="#{courseManagementBean.doAssignCourseToTrainer()}"
 					value="assign" />
 			</h:panelGrid>
+			<h:outputText value="#{identity.loggedInAsAgent ?'ok':'ko'}" />
 		</h:form>
 	</ui:define>
 

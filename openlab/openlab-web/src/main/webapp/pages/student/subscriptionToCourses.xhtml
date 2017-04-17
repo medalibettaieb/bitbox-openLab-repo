@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+	<ui:define name="title">subscription</ui:define>
+	<ui:define name="content">
+		<h1>list of All courses</h1>
+		<h:form>
+			<h:dataTable value="#{courseManagementBean.allCourses}" var="c"
+				border="2">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{c.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton 
+						action="#{courseManagementBean.doSubscribeTocourse(c)}"
+						value="subscribe">
+
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+<h1>list of My courses</h1>
+			<h:dataTable value="#{courseManagementBean.coursesByStudent}" var="c"
+				border="2">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{c.name}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
