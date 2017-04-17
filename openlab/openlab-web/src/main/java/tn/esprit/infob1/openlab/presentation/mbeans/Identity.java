@@ -14,7 +14,7 @@ import tn.esprit.infob1.openlab.services.SubscriptionServiceLocal;
 public class Identity {
 	@EJB
 	private SubscriptionServiceLocal subscriptionServiceLocal;
-
+	private Boolean loggedInAsAgent = false;
 	private User user = new User();
 
 	public String doLogin() {
@@ -27,6 +27,7 @@ public class Identity {
 			} else if (userLoggedIn instanceof Student) {
 				System.out.println("student");
 			} else {
+				loggedInAsAgent = true;
 				navigateTo = "/pages/agent/manageCourses?faces-redirect=true";
 			}
 		} else {
@@ -41,5 +42,13 @@ public class Identity {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Boolean getLoggedInAsAgent() {
+		return loggedInAsAgent;
+	}
+
+	public void setLoggedInAsAgent(Boolean loggedInAsAgent) {
+		this.loggedInAsAgent = loggedInAsAgent;
 	}
 }

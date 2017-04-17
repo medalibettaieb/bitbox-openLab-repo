@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import tn.esprit.infob1.openlab.persistence.Course;
+import tn.esprit.infob1.openlab.persistence.Teacher;
 import tn.esprit.infob1.openlab.persistence.User;
 
 @Local
@@ -20,4 +21,10 @@ public interface SubscriptionServiceLocal {
 	List<Course> findAllCourses();
 
 	User findUserById(Integer id);
+
+	List<User> findAllUsers();
+
+	List<Teacher> findallTeachers();
+
+	Teacher findTrainerByName(String name);
 }

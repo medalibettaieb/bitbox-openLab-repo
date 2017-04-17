@@ -42,10 +42,12 @@
 				<h:outputText value="name" />
 				<h:inputText value="#{courseManagementBean.courseSelected.name}" />
 				<h:outputText value="trainer name" />
-				<h:selectOneMenu value="#{courseManagementBean.idTrainer}">
+
+				<h:selectOneMenu value="#{courseManagementBean.trainerSelected}"
+					converter="tc">
 					<f:selectItem itemLabel="please select" />
-					<f:selectItem itemLabel="T1" itemValue="1" />
-					<f:selectItem itemLabel="T2" itemValue="2" />
+					<f:selectItems value="#{trainerBean.teachers}" var="t"
+						itemLabel="#{t.name}" itemValue="#{t}" />
 				</h:selectOneMenu>
 				<h:commandButton
 					action="#{courseManagementBean.doSaveOrUpdateCourse()}"

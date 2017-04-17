@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import tn.esprit.infob1.openlab.persistence.Course;
-import tn.esprit.infob1.openlab.persistence.User;
+import tn.esprit.infob1.openlab.persistence.Teacher;
 import tn.esprit.infob1.openlab.services.SubscriptionServiceLocal;
 
 @ManagedBean
@@ -16,11 +16,10 @@ import tn.esprit.infob1.openlab.services.SubscriptionServiceLocal;
 public class CourseManagementBean {
 	@EJB
 	private SubscriptionServiceLocal subscriptionServiceLocal;
-
+	private Teacher trainerSelected = new Teacher();
 	private List<Course> allCourses = new ArrayList<>();
 	private Boolean formVisibility = false;
 	private Course courseSelected = new Course();
-	private Integer idTrainer;
 
 	public void doSaveOrUpdateCourse() {
 		subscriptionServiceLocal.saveOrUpdateCourse(courseSelected);
@@ -28,8 +27,7 @@ public class CourseManagementBean {
 	}
 
 	public void doAssignCourseToTrainer() {
-		User user = subscriptionServiceLocal.findUserById(idTrainer);
-		subscriptionServiceLocal.assignCourseToTeacher(courseSelected, user);
+		subscriptionServiceLocal.assignCourseToTeacher(courseSelected, trainerSelected);
 		formVisibility = false;
 		courseSelected = new Course();
 	}
@@ -63,12 +61,12 @@ public class CourseManagementBean {
 		this.courseSelected = courseSelected;
 	}
 
-	public Integer getIdTrainer() {
-		return idTrainer;
+	public Teacher getTrainerSelected() {
+		return trainerSelected;
 	}
 
-	public void setIdTrainer(Integer idTrainer) {
-		this.idTrainer = idTrainer;
+	public void setTrainerSelected(Teacher trainerSelected) {
+		this.trainerSelected = trainerSelected;
 	}
 
 }

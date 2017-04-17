@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.infob1.openlab.persistence.Course;
+import tn.esprit.infob1.openlab.persistence.Teacher;
 import tn.esprit.infob1.openlab.persistence.User;
 
 /**
@@ -70,6 +71,23 @@ public class SubscriptionService implements SubscriptionServiceRemote, Subscript
 	@Override
 	public User findUserById(Integer id) {
 		return entityManager.find(User.class, id);
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		return entityManager.createQuery("SELECT c FROM User c", User.class).getResultList();
+	}
+
+	@Override
+	public List<Teacher> findallTeachers() {
+		return entityManager.createQuery("SELECT c FROM Teacher c", Teacher.class).getResultList();
+	}
+
+	@Override
+	public Teacher findTrainerByName(String name) {
+		return entityManager.createQuery("SELECT c FROM Teacher c WHERE c.name=:p", Teacher.class)
+				.setParameter("p", name).getSingleResult();
+
 	}
 
 }
