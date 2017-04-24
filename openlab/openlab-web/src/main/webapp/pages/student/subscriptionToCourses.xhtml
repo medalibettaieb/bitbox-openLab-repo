@@ -4,20 +4,21 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	template="/WEB-INF/template/template.xhtml">
+	template="/WEB-INF/template/template.xhtml"
+	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="title">subscription</ui:define>
 	<ui:define name="content">
 		<h1>list of All courses</h1>
 		<h:form>
-			<h:dataTable value="#{courseManagementBean.allCourses}" var="c"
-				border="2">
-				<h:column>
+			<p:dataTable value="#{courseManagementBean.allCourses}" var="c"
+				filteredValue="#{courseManagementBean.coursesFiltred}" border="2" >
+				<p:column filterBy="#{c.name}" filterMatchMode="contains" sortBy="#{c.name}">
 					<f:facet name="header">
 						<h:outputText value="name" />
 					</f:facet>
 					<h:outputText value="#{c.name}" />
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">
 						<h:outputText value="#" />
 					</f:facet>
@@ -25,8 +26,8 @@
 						action="#{courseManagementBean.doSubscribeTocourse(c)}"
 						value="#{courseManagementBean.buttonStatus ?'unsuscribe':'subscribe'}">
 					</h:commandButton>
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 			<h1>list of My courses</h1>
 			<h:dataTable value="#{courseManagementBean.coursesByStudent}" var="c"
 				border="2">

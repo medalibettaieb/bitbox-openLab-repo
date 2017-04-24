@@ -15,6 +15,8 @@ import tn.esprit.infob1.openlab.services.SubscriptionServiceLocal;
 @ManagedBean
 @ViewScoped
 public class CourseManagementBean {
+	
+	private List<Course> coursesFiltred=new ArrayList<>();
 	@EJB
 	private SubscriptionServiceLocal subscriptionServiceLocal;
 	private List<Course> coursesByTrainer = new ArrayList<>();
@@ -122,6 +124,14 @@ public class CourseManagementBean {
 
 	public void setButtonStatus(Boolean buttonStatus) {
 		this.buttonStatus = buttonStatus;
+	}
+
+	public List<Course> getCoursesFiltred() {
+		return coursesFiltred;
+	}
+
+	public void setCoursesFiltred(List<Course> coursesFiltred) {
+		this.coursesFiltred = coursesFiltred;
 	}
 
 }

@@ -6,13 +6,13 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
 
-	<!-- <h:form rendered="#{identity.isLogged}">
+	<h:form rendered="#{identity.logged}">
 		<h:panelGrid columns="2">
 			<h:outputText value="Logged in as #{identity.user.name}" />
 			<p:commandButton action="#{identity.logout()}" ajax="false"
 				value="Logout" />
 		</h:panelGrid>
-	</h:form> -->
+	</h:form>
 
 </ui:composition>
 
