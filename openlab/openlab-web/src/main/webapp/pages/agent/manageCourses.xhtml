@@ -10,8 +10,10 @@
 		<h:form>
 			<h1>list of courses</h1>
 			<h1>hi Mr/Mrs : #{identity.user.name}</h1>
-			<h:dataTable value="#{courseManagementBean.allCourses}" var="c"
-				border="2">
+			<h:outputText value="Table is empty!"
+				rendered="#{empty courseManagementBean.allCourses}" />
+			<h:dataTable rendered="#{not empty courseManagementBean.allCourses}"
+				value="#{courseManagementBean.allCourses}" var="c" border="2">
 				<h:column id="c1">
 					<f:facet name="header">
 						<h:outputText value="name" />
@@ -56,7 +58,6 @@
 					action="#{courseManagementBean.doAssignCourseToTrainer()}"
 					value="assign" />
 			</h:panelGrid>
-			<h:outputText value="#{identity.loggedInAsAgent ?'ok':'ko'}" />
 		</h:form>
 	</ui:define>
 

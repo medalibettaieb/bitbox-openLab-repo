@@ -33,5 +33,7 @@ public interface SubscriptionServiceLocal {
 	List<Course> findAllCoursesByStudent(User user);
 
 	void assingStudentToCourse(User user, Course courseSelected);
+	
+	void unsubscribeStudentFromCourse(User user, Course courseSelected);
 
 }

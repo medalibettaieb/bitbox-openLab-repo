@@ -22,6 +22,7 @@ public class CourseManagementBean {
 	private Teacher trainerSelected = new Teacher();
 	private List<Course> allCourses = new ArrayList<>();
 	private Boolean formVisibility = false;
+	private Boolean buttonStatus = false;
 	private Course courseSelected = new Course();
 	@ManagedProperty(value = "#{identity}")
 	private Identity identity;
@@ -32,8 +33,16 @@ public class CourseManagementBean {
 	}
 
 	public void doSubscribeTocourse(Course course) {
-		subscriptionServiceLocal.assingStudentToCourse(identity.getUser(), course);
-		formVisibility = false;
+		List<Course> coursesByStrudent = subscriptionServiceLocal.findAllCoursesByStudent(identity.getUser());
+		if (coursesByStrudent.contains(course)) {
+			subscriptionServiceLocal.unsubscribeStudentFromCourse(identity.getUser(), course);
+			buttonStatus = false;
+		} else {
+			subscriptionServiceLocal.assingStudentToCourse(identity.getUser(), course);
+			formVisibility = false;
+			buttonStatus = true;
+		}
+
 	}
 
 	public void doAssignCourseToTrainer() {
@@ -103,6 +112,16 @@ public class CourseManagementBean {
 
 	public void setCoursesByStudent(List<Course> coursesByStudent) {
 		this.coursesByStudent = coursesByStudent;
+	}
+
+	public Boolean getButtonStatus() {
+		List<Course> coursesByStudent = subscriptionServiceLocal.findAllCoursesByStudent(identity.getUser());
+
+		return buttonStatus;
+	}
+
+	public void setButtonStatus(Boolean buttonStatus) {
+		this.buttonStatus = buttonStatus;
 	}
 
 }

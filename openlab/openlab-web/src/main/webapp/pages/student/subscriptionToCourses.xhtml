@@ -21,14 +21,13 @@
 					<f:facet name="header">
 						<h:outputText value="#" />
 					</f:facet>
-					<h:commandButton 
+					<h:commandButton
 						action="#{courseManagementBean.doSubscribeTocourse(c)}"
-						value="subscribe">
-
+						value="#{courseManagementBean.buttonStatus ?'unsuscribe':'subscribe'}">
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>
-<h1>list of My courses</h1>
+			<h1>list of My courses</h1>
 			<h:dataTable value="#{courseManagementBean.coursesByStudent}" var="c"
 				border="2">
 				<h:column>

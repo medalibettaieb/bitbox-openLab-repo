@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.infob1.openlab.persistence.Course;
+import tn.esprit.infob1.openlab.persistence.Teacher;
 import tn.esprit.infob1.openlab.persistence.User;
 
 @Remote
@@ -23,4 +24,13 @@ public interface SubscriptionServiceRemote {
 
 	List<User> findAllUsers();
 
+	List<Teacher> findallTeachers();
+
+	Teacher findTrainerByName(String name);
+
+	List<Course> findAllCoursesByTrainer(User user);
+
+	List<Course> findAllCoursesByStudent(User user);
+
+	void assingStudentToCourse(User user, Course courseSelected);
 }

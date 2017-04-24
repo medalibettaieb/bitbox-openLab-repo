@@ -1,5 +1,7 @@
 package delegate;
 
+import java.util.List;
+
 import serviceLocator.ServiceLocator;
 import tn.esprit.infob1.openlab.persistence.Course;
 import tn.esprit.infob1.openlab.persistence.User;
@@ -22,5 +24,9 @@ public class SubscriptionServiceDelegate {
 
 	public static User doLogin(String login, String password) {
 		return getProxy().login(login, password);
+	}
+
+	public static List<Course> doFindCoursesByStudent(User user) {
+		return getProxy().findAllCoursesByStudent(user);
 	}
 }

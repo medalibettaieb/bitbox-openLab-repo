@@ -111,4 +111,15 @@ public class SubscriptionService implements SubscriptionServiceRemote, Subscript
 		entityManager.merge(user);
 	}
 
+	@Override
+	public void unsubscribeStudentFromCourse(User user, Course courseSelected) {
+		List<Course> coursesOld = findAllCoursesByStudent(user);
+		coursesOld.remove(courseSelected);
+
+		user.setCoursesAttended(coursesOld);
+		entityManager.merge(user);
+		
+		System.out.println("succesfully unsubscribed ...");
+
+	}
 }
